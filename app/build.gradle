@@ -1,0 +1,79 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "com.zhengjipeng.kotlinexpress"
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+    }
+    lintOptions {
+        disable 'GoogleAppIndexingWarning', 'UnusedResources'
+        // Lint still does not detect usage of resources from Kotlin code.
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    // DSL
+    def ankoVersion = "0.10.1"
+    compile "org.jetbrains.anko:anko-sdk15:$ankoVersion"
+    compile "org.jetbrains.anko:anko-support-v4:$ankoVersion"
+    compile "org.jetbrains.anko:anko-appcompat-v7:$ankoVersion"
+
+    // Reactive library
+    def rxLifecycleVersion = "2.0.1"
+    compile "com.trello.rxlifecycle2:rxlifecycle:$rxLifecycleVersion"
+    compile "com.trello.rxlifecycle2:rxlifecycle-android:$rxLifecycleVersion"
+    compile "com.trello.rxlifecycle2:rxlifecycle-components:$rxLifecycleVersion"
+    compile "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rxLifecycleVersion"
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$KOTLIN_VERSION"
+
+    // Persist Instance State
+
+    // Tools
+
+    // Data Layer
+    compile project(":data")
+    //releaseCompile project(path: ':data', configuration: "release")
+    //implementation project(':data')
+    //debugImplementation 'com.example.android:app-magic:12.3'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:design:25.3.1'
+    compile 'io.reactivex.rxjava2:rxkotlin:2.0.2'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'com.github.yamamotoj:pikkel:0.3.3'
+    compile 'com.github.nekocode:Meepo:0.1.5'
+    compile 'com.github.nekocode:ItemPool:0.5.4'
+    compile 'com.github.nekocode:DividerDrawable:1.2.1'
+    compile 'uk.co.chrisjenx:calligraphy:2.3.0'
+    testCompile 'junit:junit:4.12'
+
+    //zxing二维码
+    compile 'com.google.zxing:core:3.2.1'
+    compile 'com.journeyapps:zxing-android-embedded:3.3.0'
+}
