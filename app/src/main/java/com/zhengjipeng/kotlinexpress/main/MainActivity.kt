@@ -4,11 +4,12 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import android.view.Menu
+import com.zhengjipeng.kotlinexpress.BaseActivity
 import com.zhengjipeng.kotlinexpress.R
 import com.zhengjipeng.kotlinexpress.UIRouter
 
 
-class MainActivity : AppCompatActivity(), Contract.View {
+class MainActivity : BaseActivity(), Contract.View {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
