@@ -2,21 +2,19 @@ package com.zhengjipeng.kotlinexpress.send
 
 import android.content.Intent
 import android.net.Uri
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.view.MenuItem
-import com.zhengjipeng.kotlinexpress.BaseActivity
+import com.zhengjipeng.kotlinexpress.base.BaseActivity
 
 import com.zhengjipeng.kotlinexpress.R
-import com.zhengjipeng.kotlinexpress.main.Contract
 import android.webkit.WebView
 import android.webkit.WebViewClient
 
 
 
-class SendEmailActivity : BaseActivity() {
+class SendEmailActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item?.itemId == android.R.id.home){

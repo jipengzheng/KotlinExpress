@@ -1,22 +1,21 @@
 package com.zhengjipeng.kotlinexpress.main
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
 import android.view.Menu
-import com.zhengjipeng.kotlinexpress.BaseActivity
+import com.zhengjipeng.kotlinexpress.base.BaseActivity
 import com.zhengjipeng.kotlinexpress.R
 import com.zhengjipeng.kotlinexpress.UIRouter
 
 
 class MainActivity : BaseActivity(), Contract.View {
+    override fun onCreatePresenter(presenterFactory: PresenterFactory) {
+        presenterFactory.createOrGet(MainPresenter::class.java)
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun setPresenter(presenter: Contract.Presenter) {
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
